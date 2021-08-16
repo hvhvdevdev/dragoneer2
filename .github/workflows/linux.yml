@@ -1,12 +1,23 @@
 name: Linux
 on: [ push,pull_request ]
 jobs:
-  build-msvc:
+  build-gcc:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
-        run: mkdir _build && cd _build && cmake ..
+        run: mkdir _build && cd _build && CC=/usr/bin/gcc cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run:
+          ls -lRa
+  build-clang:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: mkdir _build && cd _build && CC=/usr/bin/clang cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files
