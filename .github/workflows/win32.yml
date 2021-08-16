@@ -1,0 +1,27 @@
+name: Win32
+on: [ push,pull_request ]
+jobs:
+  build-msvc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: mkdir _build && cd _build && cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run: tree
+  build-clang:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add clang path to $PATH env
+        shell: bash
+        run: echo "PATH=$PATH:C:\msys64\mingw64\bin" >> $GITHUB_ENV
+      - name: Prepare
+        shell: bash
+        run: mkdir _build && cd _build && CC=clang CXX=clang++ cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run: tree
