@@ -19,7 +19,7 @@ jobs:
         shell: bash
         run: echo "PATH=$PATH:C:\msys64\mingw64\bin" >> $GITHUB_ENV
       - name: Prepare
-        run: mkdir _build && cd _build && CC=clang CXX=clang++ cmake ..
+        run: mkdir _build && cd _build && export CC=clang && CXX=clang++ cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files
