@@ -6,9 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup GCC
-        run: brew install gcc ;gcc -v
+        run: brew reinstall gcc ;gcc-11 -v
       - name: Prepare
-        run: mkdir _build && cd _build && CC=gcc cmake ..
+        run: mkdir _build && cd _build && CC=gcc-11 cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files
