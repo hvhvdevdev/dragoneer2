@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
-        run: mkdir _build && cd _build && CC=/usr/bin/gcc cmake ..
+        run: mkdir _build && cd _build && CC=/usr/bin/gcc cmake -DCMAKE_C_COMPILER=/usr/bin/gcc ..
       - name: Build
         run: cmake --build _build
       - name: List files
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
-        run: mkdir _build && cd _build && CC=/usr/bin/clang cmake -DCMAKE_C_COMPILER=/usr/bin/gcc ..
+        run: mkdir _build && cd _build && CC=/usr/bin/clang cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files
