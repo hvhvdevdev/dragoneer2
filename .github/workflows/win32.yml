@@ -23,7 +23,7 @@ jobs:
       - name: Check Clang
         run: clang -v
       - name: Prepare
-        run: mkdir _build && cd _build && cmake ..
+        run: mkdir _build && cd _build && cmake  -G "MinGW Makefiles" -DCMAKE_C_COMPILER:PATH="C:\Program Files\LLVM\bin\clang.exe"  ..
       - name: Build
         run: cmake --build _build
       - name: List files
