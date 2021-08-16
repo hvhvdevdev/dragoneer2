@@ -1,0 +1,24 @@
+name: Linux
+on: [ push,pull_request ]
+jobs:
+  build-gcc:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: mkdir _build && cd _build && CC=/usr/bin/gcc cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run:
+          ls -lRa
+  build-clang:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: mkdir _build && cd _build && CC=/usr/bin/clang cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run: ls -lRa
