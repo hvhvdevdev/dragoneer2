@@ -5,8 +5,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup GCC
+        run: brew install gcc ;gcc -v
       - name: Prepare
-        run: mkdir _build && cd _build && CC=gcc-8 cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-8 ..
+        run: mkdir _build && cd _build && CC=gcc cmake -DCMAKE_C_COMPILER=/usr/local/bin/gcc ..
       - name: Build
         run: cmake --build _build
       - name: List files
