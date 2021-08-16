@@ -23,7 +23,7 @@ jobs:
       - name: Check Clang
         run: clang -v
       - name: Prepare
-        run: mkdir _build && cd _build && set CC=clang && cmake .. -DCMAKE_C_COMPILER:"clang"
+        run: mkdir _build && cd _build && set CC=clang && cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files

@@ -1,0 +1,13 @@
+name: Linux
+on: [ push,pull_request ]
+jobs:
+  build-msvc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: mkdir _build && cd _build && cmake ..
+      - name: Build
+        run: cmake --build _build
+      - name: List files
+        run: ls -lRa
