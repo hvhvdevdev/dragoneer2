@@ -8,7 +8,7 @@ jobs:
       - name: Setup GCC
         run: brew install gcc ;gcc -v
       - name: Prepare
-        run: mkdir _build && cd _build && CC=gcc cmake -DCMAKE_C_COMPILER=/usr/local/bin/gcc ..
+        run: mkdir _build && cd _build && CC=gcc cmake ..
       - name: Build
         run: cmake --build _build
       - name: List files
