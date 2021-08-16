@@ -15,7 +15,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Check Clang
+        run: C:\msys64\mingw64\bin\clang.exe -v
       - name: Prepare
+        shell: bash
         run: mkdir _build && cd _build && cmake .. -DCMAKE_C_COMPILER:PATH="C:\msys64\mingw64\bin\clang.exe"
       - name: Build
         run: cmake --build _build
