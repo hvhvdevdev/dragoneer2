@@ -1,4 +1,4 @@
-name: Linux
+name: macOS
 on: [ push,pull_request ]
 jobs:
   build-gcc:
