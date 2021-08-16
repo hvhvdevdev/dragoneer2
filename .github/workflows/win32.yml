@@ -16,10 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check Clang
-        run: C:\msys64\mingw64\bin\clang.exe -v
+        shell: bash
+        run: C:\msys64\mingw64\bin\clang.exe -v && echo "PATH=$PATH:C:\msys64\mingw64\bin" >> $GITHUB_ENV
       - name: Prepare
         shell: bash
-        run: mkdir _build && cd _build && cmake .. -DCMAKE_C_COMPILER:PATH="C:\msys64\mingw64\bin\clang.exe"
+        run: mkdir _build && cd _build && CC=clang cmake .. -DCMAKE_C_COMPILER:PATH="C:\msys64\mingw64\bin\clang.exe"
       - name: Build
         run: cmake --build _build
       - name: List files
